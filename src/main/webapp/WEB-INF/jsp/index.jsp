@@ -8,9 +8,9 @@
 <body>
 <br>
 <form action="/search" method="POST">
-<input name="search" placeholder="search" >
-<input type="submit" value="search">
-<br>
+  <input name="search" placeholder="search" >
+  <input type="submit" value="search">
+  <br>
 </form>
 <table>
   <thead>
@@ -38,6 +38,8 @@
   </c:forEach>
   </tbody>
 </table>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<!--  Сортировка    -->
 
 </body>
 </html>
