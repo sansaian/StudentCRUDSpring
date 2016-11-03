@@ -11,8 +11,8 @@
     <schema id="3" parent="1" name="public">
       <object-id>2200</object-id>
       <visible>1</visible>
-      <introspection-state-number>677</introspection-state-number>
-      <introspection-timestamp>2016-11-01.13:54:04.600</introspection-timestamp>
+      <introspection-state-number>709</introspection-state-number>
+      <introspection-timestamp>2016-11-03.10:23:27.490</introspection-timestamp>
     </schema>
     <schema id="4" parent="1" name="pg_catalog">
       <object-id>11</object-id>
@@ -33,61 +33,118 @@
       <object-id>24592</object-id>
       <state-number>677</state-number>
     </sequence>
-    <table id="10" parent="3" name="students">
+    <sequence id="10" parent="3" name="user_role_user_role_id_seq">
+      <object-id>24615</object-id>
+      <state-number>706</state-number>
+    </sequence>
+    <table id="11" parent="3" name="students">
       <object-id>24594</object-id>
       <state-number>677</state-number>
     </table>
-    <table id="11" parent="3" name="users">
-      <object-id>16393</object-id>
-      <state-number>621</state-number>
+    <table id="12" parent="3" name="user_role">
+      <object-id>24617</object-id>
+      <state-number>709</state-number>
     </table>
-    <column id="12" parent="10" name="id">
+    <table id="13" parent="3" name="users">
+      <object-id>24611</object-id>
+      <state-number>709</state-number>
+    </table>
+    <column id="14" parent="11" name="id">
       <state-number>677</state-number>
       <mandatory>1</mandatory>
       <data-type>integer|0</data-type>
       <default-expression>nextval(&apos;students_id_seq&apos;::regclass)</default-expression>
     </column>
-    <column id="13" parent="10" name="first_name">
+    <column id="15" parent="11" name="first_name">
       <state-number>677</state-number>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="14" parent="10" name="last_name">
+    <column id="16" parent="11" name="last_name">
       <state-number>677</state-number>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="15" parent="10" name="sex">
+    <column id="17" parent="11" name="sex">
       <state-number>677</state-number>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="16" parent="10" name="birth">
+    <column id="18" parent="11" name="birth">
       <state-number>677</state-number>
       <data-type>date|0</data-type>
     </column>
-    <index id="17" parent="10" name="students_pkey">
+    <index id="19" parent="11" name="students_pkey">
       <object-id>24601</object-id>
       <columns>id</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="18" parent="10" name="students_pkey">
+    <key id="20" parent="11" name="students_pkey">
       <object-id>24602</object-id>
       <columns>id</columns>
       <underlying-index>students_pkey</underlying-index>
       <primary>1</primary>
     </key>
-    <column id="19" parent="11" name="user_name">
-      <state-number>618</state-number>
+    <column id="21" parent="12" name="user_role_id">
+      <state-number>706</state-number>
       <mandatory>1</mandatory>
-      <data-type>varchar(30)|0</data-type>
+      <data-type>integer|0</data-type>
+      <default-expression>nextval(&apos;user_role_user_role_id_seq&apos;::regclass)</default-expression>
     </column>
-    <column id="20" parent="11" name="user_email">
-      <state-number>659</state-number>
+    <column id="22" parent="12" name="username">
+      <state-number>708</state-number>
       <mandatory>1</mandatory>
-      <data-type>varchar(30)|0</data-type>
+      <data-type>varchar(45)|0</data-type>
     </column>
-    <column id="21" parent="11" name="user_password">
-      <state-number>621</state-number>
-      <data-type>varchar|0</data-type>
+    <column id="23" parent="12" name="role ">
+      <state-number>706</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
     </column>
+    <index id="24" parent="12" name="user_role_pkey">
+      <object-id>24621</object-id>
+      <columns>user_role_id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="25" parent="12" name="user_role_pkey">
+      <object-id>24622</object-id>
+      <columns>user_role_id</columns>
+      <underlying-index>user_role_pkey</underlying-index>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="26" parent="12" name="user_role_users_username_fk">
+      <object-id>24625</object-id>
+      <columns>username</columns>
+      <ref-key>~.users.users_username_pk</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="27" parent="13" name="username">
+      <state-number>707</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <column id="28" parent="13" name="password">
+      <state-number>699</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <column id="29" parent="13" name="enable">
+      <state-number>699</state-number>
+      <mandatory>1</mandatory>
+      <data-type>integer|0</data-type>
+      <default-expression>1</default-expression>
+    </column>
+    <index id="30" parent="13" name="users_username_pk">
+      <object-id>24623</object-id>
+      <columns>username</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="31" parent="13" name="users_username_pk">
+      <object-id>24624</object-id>
+      <columns>username</columns>
+      <underlying-index>users_username_pk</underlying-index>
+      <primary>1</primary>
+    </key>
   </database-model>
 </dataSource>
